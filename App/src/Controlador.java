@@ -59,6 +59,40 @@ public class Controlador {
         return null;
     }
 
+    public ArrayList<Object> realizarOperacionesDispositivo(int id){
+        ArrayList<Object> resultados = new ArrayList<Object>();
+        Dispositivo dispositivoAUsar = null;
+
+        for (Dispositivo dispositivo : listaDispositivos) {
+            if (dispositivo.getId() == id){
+                dispositivoAUsar = dispositivo;
+            }
+        }
+
+        if (dispositivoAUsar == null) {
+            return null;
+
+        } else{
+            ArrayList<String> listaValvulas = new ArrayList<String>();
+            listaValvulas.add("valvula1");
+            listaValvulas.add("valvula2");
+            listaValvulas.add("valvula3");
+
+            ArrayList<Boolean> listaEstados = new ArrayList<Boolean>();
+            listaEstados.add(true);
+            listaEstados.add(true);
+            listaEstados.add(false);
+
+            resultados.add(dispositivoAUsar.medirAltitud());
+            resultados.add(dispositivoAUsar.medirTemperatura());
+            resultados.add(dispositivoAUsar.activarValvulas(listaValvulas, listaEstados));
+            resultados.add(dispositivoAUsar.activarSenalEmergencia("Alarma sismica"));
+            resultados.add(dispositivoAUsar.guardarDatos("Base de datos 11"));
+
+            return resultados;
+        }
+    }
+
     public ArrayList<String> ordenarDispositivos(){
         ArrayList<Dispositivo> copiaListaDispositivos = new ArrayList<Dispositivo>();
         ArrayList<String> listaNombresOrdenados = new ArrayList<String>();

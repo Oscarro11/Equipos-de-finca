@@ -55,4 +55,30 @@ public class Consola {
     public static void mostrarDespedida(){
         escribir("Gracias por usar el programa de manejo de dispositivos");
     }
+
+    public static void mostrarOpcionInvalida(){
+        escribir("La opcion ingresada no es valida, por favor intente de nuevo.");
+    }
+
+    public static void mostrarResultadoOperacion(ArrayList<Object> resultados){
+        escribir(resultados.get(0) != null 
+        ? "La medicion de altitud fue de: " + resultados.get(0) + " metros de altura sobre el mar"
+        : "La medicion de altitud no puede realizarse con este dispositivo");
+
+        escribir(resultados.get(1) != null 
+        ? "La medicion de temperatura fue de: " + resultados.get(1) + " grados Celcius" 
+        : "La medicion de temperatura no puede realizarse con este dispositivo");
+
+        escribir(resultados.get(2) != null 
+        ? "La activacion de valvulas fue " + ((boolean) resultados.get(2) ? "exitosa" : "no exitosa" )
+        : "La activacion de valvulas no puede realizarse con este dispositivo");
+
+        escribir(resultados.get(3) != null 
+        ? (String) resultados.get(3) 
+        : "La activacion de alarmas no puede realizarse con este dispositivo");
+
+        escribir(resultados.get(4) != null 
+        ? (String) resultados.get(4) 
+        : "El registro de datos no puede realizarse con este dispositivo");
+    }
 }
