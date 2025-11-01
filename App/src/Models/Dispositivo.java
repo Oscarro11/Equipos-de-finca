@@ -23,11 +23,11 @@ public abstract class Dispositivo implements Medible, Accionable, Registrable, C
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("ID: " + id);
-        builder.append("Nombre: " + nombre);
-        builder.append("Marca: " + marca);
-        builder.append("Consumo de energia por hora: " + consumoDeEnergia + " Watts");
-        builder.append("Meses restantes de vida util: " + vidaUtilRestante);
+        builder.append("- ID: " + id + "\n");
+        builder.append("- Nombre: " + nombre + "\n");
+        builder.append("- Marca: " + marca + "\n");
+        builder.append("- Consumo de energia por hora: " + consumoDeEnergia + " Watts" + "\n");
+        builder.append("- Meses restantes de vida util: " + vidaUtilRestante + "\n");
 
         return builder.toString();
     }
