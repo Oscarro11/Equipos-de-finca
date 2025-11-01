@@ -20,6 +20,17 @@ public abstract class Dispositivo implements Medible, Accionable, Registrable, C
         }
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("ID: " + id);
+        builder.append("Nombre: " + nombre);
+        builder.append("Marca: " + marca);
+        builder.append("Consumo de energia por hora: " + consumoDeEnergia + " Watts");
+        builder.append("Meses restantes de vida util: " + vidaUtilRestante);
+
+        return builder.toString();
+    }
 
     public int getConsumoDeEnergia() {
         return consumoDeEnergia;
