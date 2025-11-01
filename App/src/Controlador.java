@@ -8,7 +8,9 @@ public class Controlador {
     private ArrayList<Dispositivo> listaDispositivos = new ArrayList<Dispositivo>();
     private int cuentaDispositivos = 0;
 
-    public Controlador() {}
+    public Controlador(int cantidadDispositivos) {
+        generarDispositivos(cantidadDispositivos);
+    }
 
     public void generarDispositivos(int cantidadDispositivos){
         Random RNG = new Random();
@@ -97,14 +99,14 @@ public class Controlador {
         ArrayList<Dispositivo> copiaListaDispositivos = new ArrayList<Dispositivo>();
         ArrayList<String> listaNombresOrdenados = new ArrayList<String>();
 
-        for (Dispositivo dispositivo : copiaListaDispositivos) {
+        for (Dispositivo dispositivo : listaDispositivos) {
             copiaListaDispositivos.add(dispositivo);
         }
 
         copiaListaDispositivos.sort(Comparator.naturalOrder());
 
         for (int i = 0; i < copiaListaDispositivos.size(); i++){
-            listaNombresOrdenados.set(i, copiaListaDispositivos.get(i).getNombre());
+            listaNombresOrdenados.add(i, copiaListaDispositivos.get(i).getNombre());
         }
 
         return listaNombresOrdenados;

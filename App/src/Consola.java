@@ -17,7 +17,18 @@ public class Consola {
     }
 
     public static void mostrarCaracteristicasDispositivo(String infoDispositivo){
-        escribir(infoDispositivo);
+        if (infoDispositivo == null){
+            escribir("No existe un dispositivo en el catalogo con la caracteristica ingresada");
+        } else{
+            escribir(infoDispositivo);
+        }  
+    }
+
+    public static void mostrarNombresOrdenadosCatalogo(ArrayList<String> nombres){
+        escribir("Estos son los dispositivos registrados en el catalogo, en base a su consumo de energia: ");
+        for (String nombre : nombres) {
+            escribir("- " + nombre);
+        }
     }
 
     public static String pedirNombreDispositivo(){
@@ -29,23 +40,36 @@ public class Consola {
         int numero;
         
         escribir("Ingrese el ID del dispositivo: ");
-        numero = teclado.nextInt();
-        teclado.nextLine();
-
+        
+        try {
+            numero = teclado.nextInt();
+            teclado.nextLine();
+        } catch (Exception e) {
+            escribir("El texto ingresado no corresponde con un numero. Se hara default al numero 1");
+            return 1;
+        }
+        
         return numero;
     }
 
-    public static void mostrarMenu(){
+    public static int mostrarMenu(){
         StringBuilder builder = new StringBuilder();
+        int opcion = 0;
 
         builder.append("Elija una de las siguientes opciones: \n");
         builder.append("1) Mostrar catalogo de dispositivos \n");
         builder.append("2) Buscar dipositivo por ID \n");
         builder.append("3) Buscar dipositivo por nombre \n");
         builder.append("4) Realizar muestra de capacidades de dispositivo \n");
-        builder.append("5) Mostrar catalogo en base a consumo de energia");
+        builder.append("5) Mostrar catalogo en base a consumo de energia \n");
+        builder.append("6) Salir del programa");
 
         escribir(builder.toString());
+        
+        opcion = teclado.nextInt();
+        teclado.nextLine();
+
+        return opcion;
     }
 
     public static void mostrarBienvenida(){
